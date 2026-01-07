@@ -13,7 +13,7 @@ logger = logging.getLogger(__file__)
 
 def get_product_list(last_id, client_id, seller_token):
     """Получает список товаров из магазина Ozon.
-    
+
     Args:
     last_id (str): Последний артикул для отбора.
     client_id (str): ID магазина.
@@ -27,8 +27,10 @@ def get_product_list(last_id, client_id, seller_token):
     [...]
 
     >>> get_product_list(10, 1234)
-    TypeError: price_conversion() missing 1 required positional argument: 'seller_token'
-        Если все таки указать 3й аргумент, тогда получите ошибку в ответе от API Ozon.
+    TypeError: price_conversion() missing 1 required
+        positional argument: 'seller_token'
+        Если все таки указать 3й аргумент, тогда получите
+        ошибку в ответе от API Ozon.
     """
     url = "https://api-seller.ozon.ru/v2/product/list"
     headers = {
@@ -50,7 +52,7 @@ def get_product_list(last_id, client_id, seller_token):
 
 def get_offer_ids(client_id, seller_token):
     """Получает артикулы товаров из магазина Ozon.
-    
+
     Args:
     client_id (str): ID магазина.
     seller_token (str): API токен продавца.
@@ -125,7 +127,8 @@ def update_stocks(stocks: list, client_id, seller_token):
 
     Examples:
     >>> update_price(stocks, '1234', 'Ab123CDe45')
-        От API Ozon вернется словарь, сообщающий об успешном обновлении остатков.
+        От API Ozon вернется словарь, сообщающий об
+            успешном обновлении остатков.
 
     >>> update_price(10, '1234', 'Ab123CDe45')
         От API Ozon вернется словарь, сообщающий
@@ -185,7 +188,7 @@ def create_stocks(watch_remnants, offer_ids):
     Сначала функция убирает все данные об артикулах, которые не продаются
     в магазине Ozon, после чего добавляет 0 остатки по артикулам, которые
     не содержатся в списке часов с сайта ООО "Группа АВГУСТ".
-    
+
     Args:
     watch_remnants (dict): Cловарь с данными о часах,
         продающихся на сайте компании ООО "Группа АВГУСТ".
@@ -222,7 +225,7 @@ def create_stocks(watch_remnants, offer_ids):
 
 def create_prices(watch_remnants, offer_ids):
     """Формирует цены для часов, которые продаются в магазине Ozon.
-    
+
     Args:
     watch_remnants (dict): Словарь с данными о часах,
         продающихся на сайте компании ООО "Группа АВГУСТ".
@@ -290,7 +293,7 @@ def divide(lst: list, n: int):
     TypeError: object of type 'int' has no len()
     """
     for i in range(0, len(lst), n):
-        yield lst[i : i + n]
+        yield lst[i: i + n]
 
 
 async def upload_prices(watch_remnants, client_id, seller_token):
