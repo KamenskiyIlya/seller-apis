@@ -281,6 +281,7 @@ def divide(lst: list, n: int):
 
     Examples:
     >>> next(divide([1, 2, 3, 4, 5], 2)
+    [1, 2]
 
     >>> update_price([], 2)
     StopIteration
