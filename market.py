@@ -28,7 +28,7 @@ def get_product_list(page, campaign_id, access_token):
     >>> get_product_list(10, 1234)
     TypeError: price_conversion() missing 1 required
         positional argument: 'access_token'
-    """    
+    """
     endpoint_url = "https://api.partner.market.yandex.ru/"
     headers = {
         "Content-Type": "application/json",
@@ -178,7 +178,13 @@ def create_stocks(watch_remnants, offer_ids, warehouse_id):
     AttributeError: 'str' object has no attribute 'get'
     """
     stocks = list()
-    date = str(datetime.datetime.utcnow().replace(microsecond=0).isoformat() + "Z")
+    date = str(
+        datetime.datetime
+        .utcnow()
+        .replace(microsecond=0)
+        .isoformat()
+        + "Z"
+        )
     for watch in watch_remnants:
         if str(watch.get("Код")) in offer_ids:
             count = str(watch.get("Количество"))
@@ -285,7 +291,12 @@ async def upload_prices(watch_remnants, campaign_id, market_token):
     return prices
 
 
-async def upload_stocks(watch_remnants, campaign_id, market_token, warehouse_id):
+async def upload_stocks(
+    watch_remnants,
+    campaign_id,
+    market_token,
+    warehouse_id
+):
     """Асинхронно обновляет остатки товаров продающихся на Яндекс маркете.
 
     Args:
